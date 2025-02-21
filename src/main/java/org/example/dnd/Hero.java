@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class Hero {
+    Enemies enemies;
+    D20 D20 = new D20();
     int hp = 25;
     int mp = 25;
 
@@ -18,7 +20,20 @@ public class Hero {
         int greatPotionMP = mp + 15;
     }
 
-    public void walk() {
-        String walk = "Ты продвигаешься дальше...";
+    public void walk(Enemies enemies) {
+        System.out.println("Ты устало бредёшь вперёд");
+        if (org.example.dnd.D20.rollD20() >= 12) {
+            System.out.println("Ты с опаской осматриваешься и понимаешь, что врагов рядом нет");
+        } else {
+            if (enemies == Enemies.GOBLIN) {
+                System.out.println("Ты продвигаешься дальше и видишь...гоблина!");
+            }
+            if (enemies == Enemies.GOBLIN_ON_A_WARG) {
+                System.out.println("Ты продвигаешься дальше и видишь...гоблина верхом на варге!");
+            }
+            if (enemies == Enemies.ORC) {
+                System.out.println("Ты продвигаешься дальше и видишь...орка!");
+            }
+        }
     }
 }
