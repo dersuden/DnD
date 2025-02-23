@@ -13,6 +13,6 @@ public class Glaive extends WeaponAttack {
         if (rarity == Rarity.LEGENDARY) {
             return baseDamage + 4;
         }
-        return 6;
+        return baseDamage;
     }
 }

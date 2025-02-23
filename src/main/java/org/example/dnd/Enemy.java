@@ -1,9 +1,11 @@
 package org.example.dnd;
 
 import lombok.Data;
+import lombok.Getter;
 
 @Data
-public abstract class Enemy {
+public class Enemy {
+    Hero hero = new Hero();
     protected Enemies enemyType;
     int baseHp = 10;
     int baseDamage = 3;
@@ -12,17 +14,16 @@ public abstract class Enemy {
         this.enemyType = enemies;
     }
 
-    public int getDamage() {
-        int damage = this.baseDamage;
-        int hp = this.baseHp;
-        if (enemyType.equals(Enemies.GOBLIN_ON_A_WARG)) {
-            hp += 10;
-            damage += 3;
-        }
-        if (enemyType.equals(Enemies.ORC)) {
-            hp += 15;
-            damage += 6;
-        }
-        return damage;
-    }
+//    public boolean isAlive() {
+//        return this.baseHp > 0;
+//    }
+//
+//    public void takeDamage(int damage) {
+//        this.baseHp -= damage;
+//        if (this.baseHp < 0) {
+//            this.baseHp = 0;
+//            System.out.println(enemyType + " получил " + damage + " урона");
+//            System.out.println("оставшееся здоровье: " + this.baseHp);
+//        }
+//    }
 }
