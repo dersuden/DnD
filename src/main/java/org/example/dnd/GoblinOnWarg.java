@@ -1,7 +1,7 @@
 package org.example.dnd;
 
-public class Goblin {
-    int baseHp = 10;
+public class GoblinOnWarg {
+    int baseHp = 20;
     int baseDamage = 3;
 
     public boolean isAlive() {
@@ -13,10 +13,10 @@ public class Goblin {
         if (this.baseHp < 0) {
             this.baseHp = 0;
         }
-        System.out.println("Гоблин получил " + damage + " урона");
+        System.out.println("Гоблин на варге получил " + damage + " урона");
         System.out.println("оставшееся здоровье: " + this.baseHp);
         if (this.baseHp <= 0) {
-            System.out.println("Гоблин мёртв");
+            System.out.println("Гоблин и варг мертвы");
         }
     }
 }
