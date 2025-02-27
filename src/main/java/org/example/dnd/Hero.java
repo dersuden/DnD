@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class Hero {
     Enemies enemies;
-    D20 D20 = new D20();
     String name = "Люцифер";
     int hp = 25;
     int mp = 25;
@@ -17,18 +16,6 @@ public class Hero {
         };
         Enemy orc = new Enemy(Enemies.ORC) {
         };
-        String hpInfo = "Hero hp: " + hp;
-        String mpInfo = "Hero mp: " + mp;
-        int smallPotionHP = hp + 5;
-        int bigPotionHP = hp + 10;
-        int greatPotionHP = hp + 15;
-        int smallPotionMP = mp + 5;
-        int bigPotionMP = mp + 10;
-        int greatPotionMP = mp + 15;
-    }
-
-    public int getHealth() {
-        return hp;
     }
 
     public void takeDamage(int damage) {
