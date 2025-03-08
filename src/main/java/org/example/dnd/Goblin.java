@@ -2,7 +2,7 @@ package org.example.dnd;
 
 public class Goblin {
     int baseHp = 10;
-    int baseDamage = 3;
+    int baseDamage = D4.rollD4();
 
     public boolean isAlive() {
         return this.baseHp > 0;

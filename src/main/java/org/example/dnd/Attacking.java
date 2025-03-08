@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Attacking {
     Scanner scanner = new Scanner(System.in);
+    Goblin goblin = new Goblin();
+    Hero hero = new Hero();
 
     public Attacking() {
         Map<String, WeaponAttack> weapons = new HashMap<>();
@@ -22,10 +24,17 @@ public class Attacking {
         System.out.println("Доступное оружие: Ножи, Лук, Топор, Меч, Глефа");
         System.out.println("ведите название оружия для атаки: ");
         String weaponChoice = scanner.nextLine();
+
         if (weapons.containsKey(weaponChoice)) {
             WeaponAttack weaponAttack = weapons.get(weaponChoice);
-            int damage = weaponAttack.rollDamage();
-            System.out.println("Вы атаковали " + weaponAttack.getName() + " и нанесли " + damage + " урона");
+            if (goblin.isAlive()) {
+                goblin.takeDamage(weaponAttack.rollDamage());
+                hero.takeDamage(goblin.baseDamage);
+                if (goblin.isAlive()) {
+                    goblin.takeDamage(weaponAttack.rollDamage());
+                    hero.takeDamage(goblin.baseDamage);
+                }
+            }
         } else {
             System.out.println("Оружие не найдено");
         }

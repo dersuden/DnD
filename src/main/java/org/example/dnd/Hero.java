@@ -9,31 +9,20 @@ public class Hero {
     int hp = 25;
     int mp = 25;
 
-    public void hero() {
-        Enemy goblin = new Enemy(Enemies.GOBLIN) {
-        };
-        Enemy goblinOnaWarg = new Enemy(Enemies.GOBLIN_ON_A_WARG) {
-        };
-        Enemy orc = new Enemy(Enemies.ORC) {
-        };
-    }
-
     public void takeDamage(int damage) {
         this.hp -= damage;
         if (this.hp < 0) {
             this.hp = 0;
-            System.out.println(name + " получил " + damage + " урона");
-            System.out.println("оставшееся здоровье: " + this.hp);
+        }
+        System.out.println(name + " получил " + damage + " урона");
+        System.out.println("оставшееся здоровье: " + this.hp);
+        if (this.hp == 0) {
+            System.out.println("Гоблин мёртв");
         }
     }
 
     public boolean isAlive() {
         return this.hp > 0;
-    }
-
-    @Override
-    public String toString() {
-        return name + " Здоровье: " + hp;
     }
 
     public void walk(Enemies enemies) {
@@ -43,6 +32,7 @@ public class Hero {
         } else {
             if (enemies == Enemies.GOBLIN) {
                 System.out.println("Ты продвигаешься дальше и видишь...гоблина!");
+                Attacking attackingGoblin = new Attacking();
             }
             if (enemies == Enemies.GOBLIN_ON_A_WARG) {
                 System.out.println("Ты продвигаешься дальше и видишь...гоблина верхом на варге!");
